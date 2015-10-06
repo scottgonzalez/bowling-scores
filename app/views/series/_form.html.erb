@@ -1,0 +1,36 @@
+<%= form_for @series do |f| %>
+
+  <% if @series.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@series.errors.count, "error") %> prohibited
+        this series from being saved:
+      </h2>
+      <ul>
+        <% @series.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <div>
+      <%= f.label :date %>
+      <%= f.date_field :date %>
+    </div>
+
+    <% @series.games.each.with_index do |game, index| %>
+      <%= f.fields_for :games, game do |game_field| %>
+        <div>
+          <%= game_field.label :score, "Game #{index + 1}" %>
+          <%= game_field.text_field :score %>
+        </div>
+      <% end %>
+    <% end %>
+  </fieldset>
+
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

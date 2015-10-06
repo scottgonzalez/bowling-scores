@@ -1,0 +1,24 @@
+// Place all the styles related to the Series controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.series-listing {
+	width: 100%;
+	margin: 1em auto;
+	border: 1px solid #ddd;
+	border-collapse: collapse;
+
+	tr:nth-child(even) {
+		background-color: #eee;
+	}
+
+	th,
+	td {
+		text-align: left;
+		border-top: 1px solid #ddd;
+		padding: 0.5em 1em;
+	}
+
+	th {
+	}
+}

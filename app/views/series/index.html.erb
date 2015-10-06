@@ -1,0 +1,26 @@
+<h1>All Series</h1>
+
+<%= link_to "Add a new series", new_series_path %>
+
+<table class="series-listing">
+  <tr>
+    <th>Date</th>
+    <th>Game 1</th>
+    <th>Game 2</th>
+    <th>Game 3</th>
+    <th>Series Total</th>
+    <th>Series Average</th>
+    <th>Running Average</th>
+  </tr>
+  <% @all_stats.each do |stats| %>
+    <tr>
+      <td><%= stats.series.date %></td>
+      <% stats.series.games.each.with_index do |game, index| %>
+        <td><%= game.score %></td>
+      <% end %>
+      <td><%= stats.series.total %></td>
+      <td><%= stats.series.average %></td>
+      <td><%= stats.running_average %></td>
+    </tr>
+  <% end %>
+</table>
