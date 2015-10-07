@@ -1,6 +1,6 @@
 class SeriesController < ApplicationController
   def index
-    @all_stats = SeriesStatistics.from_series_list(Series.order(date: :desc))
+    @all_stats = SeriesStatistics.from_series_list(Series.includes(:games))
   end
 
   def show

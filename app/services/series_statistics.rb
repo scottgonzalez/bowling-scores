@@ -3,12 +3,15 @@ class SeriesStatistics
     total_games = 0
     total_score = 0
 
-    series_list.map do |series|
-      total_games += series.games.size
-      total_score += series.total
+    series_list
+      .sort_by(&:date)
+      .map { |series|
+        total_games += series.games.size
+        total_score += series.total
 
-      SeriesStatistics.new(series, total_score / total_games)
-    end
+        SeriesStatistics.new(series, total_score / total_games)
+      }
+      .reverse
   end
 
   attr_reader :series, :running_average
