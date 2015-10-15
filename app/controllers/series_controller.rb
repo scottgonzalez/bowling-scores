@@ -15,10 +15,6 @@ class SeriesController < ApplicationController
   def create
     @series = Series.new(series_params)
 
-    params[:series][:games_attributes].values.each do |game_attributes|
-      @series.games.build(game_attributes)
-    end
-
     if @series.save
       redirect_to series_index_path
     else
@@ -28,6 +24,6 @@ class SeriesController < ApplicationController
 
   private
     def series_params
-      params.require(:series).permit(:date)
+      params.require(:series).permit(:date, games_attributes: [:score])
     end
 end
